@@ -4,7 +4,7 @@ import * as AppService from "../services/app.service";
 import { createdOrUpdated, ok } from "../lib/responseHandling";
 
 export const apiRuning = (request: FastifyRequest, reply: FastifyReply)=>{
-return reply.send("Api is running");
+return reply.send("Api Is Running");
 }
 export const createClass = async (
   request: FastifyRequest<{ Body: ClassModel }>,
