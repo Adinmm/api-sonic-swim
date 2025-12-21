@@ -19,6 +19,10 @@ export const createClass = async (data: ClassModel) => {
 };
 
 export const getClasses = async () => {
+  const data = await prisma.kelas.count();
+  if (data === 0) {
+    throw new Error("Class not found");
+  }
   const result = await prisma.kelas.findMany();
   if (!result) {
     throw new Error("Class not found");
