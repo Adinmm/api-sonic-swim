@@ -2,11 +2,10 @@ import cors from "@fastify/cors";
 import Fastify from "fastify";
 import dotenv from "dotenv";
 
-import {appRuning} from "./routes/app.route"
-
+import { errorHandling } from "./lib/errorHandling";
+import { appRoute, appRuning } from "./routes/app.route";
 
 dotenv.config();
-
 const app = Fastify();
 
 app.register(cors, {
@@ -14,12 +13,11 @@ app.register(cors, {
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
 });
 
-// app.register(multipart);
 
-// app.register(appRoute, { prefix: "/api" });
+app.register(appRoute, { prefix: "/api" });
 app.register(appRuning);
 
-// errorHandling(app);
+errorHandling(app);
 
 const PORT = Number(process.env.PORT) || 3000;
 
