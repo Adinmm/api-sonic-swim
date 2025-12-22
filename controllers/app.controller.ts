@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { ClassModel, UserModel } from "../schemas/app.schema";
+import { ClassModel, ContactInformationModel, UserModel } from "../schemas/app.schema";
 import * as AppService from "../services/app.service";
 import { createdOrUpdated, ok } from "../lib/responseHandling";
 
@@ -33,4 +33,15 @@ export const getUserById = async(request : FastifyRequest<{Params: {id: string}}
     const id = request.params.id;
     const data = await AppService.getUserById(id);
     return ok(reply, "User retrived successfully", data);
+}
+
+export const createContactInformation = async(request: FastifyRequest<{Body: ContactInformationModel}>, reply: FastifyReply) =>{
+  const input = request.body
+  await AppService.createContactInformation(input);
+  return createdOrUpdated(reply, "Contact Information created successfully");
+}
+
+export const getContactInformation = async(request: FastifyRequest, reply: FastifyReply)=>{
+  const result = await AppService.getContactInformation();
+  return ok(reply, "Contact Information retrived successfully", result);
 }

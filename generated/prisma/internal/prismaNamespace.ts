@@ -385,7 +385,8 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 export const ModelName = {
   user: 'user',
-  kelas: 'kelas'
+  kelas: 'kelas',
+  contact_information: 'contact_information'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -401,7 +402,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "kelas"
+    modelProps: "user" | "kelas" | "contact_information"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -553,6 +554,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    contact_information: {
+      payload: Prisma.$contact_informationPayload<ExtArgs>
+      fields: Prisma.contact_informationFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.contact_informationFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$contact_informationPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.contact_informationFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$contact_informationPayload>
+        }
+        findFirst: {
+          args: Prisma.contact_informationFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$contact_informationPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.contact_informationFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$contact_informationPayload>
+        }
+        findMany: {
+          args: Prisma.contact_informationFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$contact_informationPayload>[]
+        }
+        create: {
+          args: Prisma.contact_informationCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$contact_informationPayload>
+        }
+        createMany: {
+          args: Prisma.contact_informationCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.contact_informationCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$contact_informationPayload>[]
+        }
+        delete: {
+          args: Prisma.contact_informationDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$contact_informationPayload>
+        }
+        update: {
+          args: Prisma.contact_informationUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$contact_informationPayload>
+        }
+        deleteMany: {
+          args: Prisma.contact_informationDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.contact_informationUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.contact_informationUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$contact_informationPayload>[]
+        }
+        upsert: {
+          args: Prisma.contact_informationUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$contact_informationPayload>
+        }
+        aggregate: {
+          args: Prisma.Contact_informationAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateContact_information>
+        }
+        groupBy: {
+          args: Prisma.contact_informationGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Contact_informationGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.contact_informationCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Contact_informationCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -614,6 +689,18 @@ export const KelasScalarFieldEnum = {
 } as const
 
 export type KelasScalarFieldEnum = (typeof KelasScalarFieldEnum)[keyof typeof KelasScalarFieldEnum]
+
+
+export const Contact_informationScalarFieldEnum = {
+  id: 'id',
+  address: 'address',
+  phone: 'phone',
+  email: 'email',
+  operational_time: 'operational_time',
+  created_at: 'created_at'
+} as const
+
+export type Contact_informationScalarFieldEnum = (typeof Contact_informationScalarFieldEnum)[keyof typeof Contact_informationScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -776,6 +863,7 @@ export type PrismaClientOptions = ({
 export type GlobalOmitConfig = {
   user?: Prisma.userOmit
   kelas?: Prisma.kelasOmit
+  contact_information?: Prisma.contact_informationOmit
 }
 
 /* Types for Logging */

@@ -27,3 +27,8 @@ export type user = Prisma.userModel
  * 
  */
 export type kelas = Prisma.kelasModel
+/**
+ * Model contact_information
+ * 
+ */
+export type contact_information = Prisma.contact_informationModel

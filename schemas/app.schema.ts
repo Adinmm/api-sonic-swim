@@ -12,6 +12,14 @@ export type ClassModel = z.infer<typeof ClassSchema>;
 export const UserSchema = z.object({
   username: z.string().min(1, "Username is required"),
   password: z.string().min(8, "Password minimal 8 character"),
- 
 });
- export type UserModel = z.infer<typeof UserSchema>;
+export type UserModel = z.infer<typeof UserSchema>;
+
+export const ContactInformationSchema = z.object({
+  address: z.string().min(1, "Address is required"),
+  phone: z.string().min(1, "Phone is required"),
+  email: z.string().min(1, "Email is required"),
+  operational_time: z.array(z.string()).min(1, "Operational time is required"),
+});
+
+export type ContactInformationModel = z.infer<typeof ContactInformationSchema>;

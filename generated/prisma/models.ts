@@ -10,4 +10,5 @@
  */
 export type * from './models/user'
 export type * from './models/kelas'
+export type * from './models/contact_information'
 export type * from './commonInputTypes'

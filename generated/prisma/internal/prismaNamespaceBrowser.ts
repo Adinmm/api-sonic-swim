@@ -52,7 +52,8 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   user: 'user',
-  kelas: 'kelas'
+  kelas: 'kelas',
+  contact_information: 'contact_information'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -93,6 +94,18 @@ export const KelasScalarFieldEnum = {
 } as const
 
 export type KelasScalarFieldEnum = (typeof KelasScalarFieldEnum)[keyof typeof KelasScalarFieldEnum]
+
+
+export const Contact_informationScalarFieldEnum = {
+  id: 'id',
+  address: 'address',
+  phone: 'phone',
+  email: 'email',
+  operational_time: 'operational_time',
+  created_at: 'created_at'
+} as const
+
+export type Contact_informationScalarFieldEnum = (typeof Contact_informationScalarFieldEnum)[keyof typeof Contact_informationScalarFieldEnum]
 
 
 export const SortOrder = {

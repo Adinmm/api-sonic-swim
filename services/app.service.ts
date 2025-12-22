@@ -1,6 +1,10 @@
 import prisma from "../configs/prisma";
 import { passwordHash } from "../lib/passwordHash";
-import { ClassModel, UserModel } from "../schemas/app.schema";
+import {
+  ClassModel,
+  ContactInformationModel,
+  UserModel,
+} from "../schemas/app.schema";
 
 export const createClass = async (data: ClassModel) => {
   const result = await prisma.kelas.create({
@@ -53,3 +57,32 @@ export const getUserById = async (id: string) => {
   const { password, ...rest } = result;
   return rest;
 };
+
+export const createContactInformation = async (
+  data: ContactInformationModel
+) => {
+  const isEmpty = await prisma.contact_information.count();
+  if (isEmpty > 0) {
+    throw new Error("Contact Information already created");
+  }
+  const result = await prisma.contact_information.create({
+    data,
+  });
+  if (!result) {
+    throw new Error("Contact Information not created");
+  }
+  return result;
+};
+
+export const getContactInformation = async()=>{
+  const isEmty = await prisma.contact_information.count();
+  if (isEmty === 0) {
+    throw new Error("Contact Information not found");
+  }
+  const result = await prisma.contact_information.findMany();
+  if (!result) {
+    throw new Error("Contact Information not found");
+  }
+  return result;
+
+}

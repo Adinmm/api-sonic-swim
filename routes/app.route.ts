@@ -1,7 +1,11 @@
 import { FastifyInstance } from "fastify";
 import * as AppMiddleware from "../middlewares/validation.middleware";
 import * as AppController from "../controllers/app.controller";
-import { ClassSchema, UserSchema } from "../schemas/app.schema";
+import {
+  ClassSchema,
+  ContactInformationSchema,
+  UserSchema,
+} from "../schemas/app.schema";
 
 export const appRoute = async (route: FastifyInstance) => {
   route.post("/class", {
@@ -14,10 +18,16 @@ export const appRoute = async (route: FastifyInstance) => {
     handler: AppController.createUser,
   });
 
+  route.post("/contact_information", {
+    preHandler: AppMiddleware.validation(ContactInformationSchema),
+    handler: AppController.createContactInformation,
+  });
+
   route.get("/user/:id", AppController.getUserById);
   route.get("/classes", AppController.getClass);
+  route.get("/ ontact_informations", AppController.getContactInformation);
 };
 
-export const appRuning = async(route: FastifyInstance) => {
+export const appRuning = async (route: FastifyInstance) => {
   route.get("/", AppController.apiRuning);
-}
+};
