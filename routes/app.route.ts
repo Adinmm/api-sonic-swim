@@ -25,7 +25,7 @@ export const appRoute = async (route: FastifyInstance) => {
 
   route.get("/user/:id", AppController.getUserById);
   route.get("/classes", AppController.getClass);
-  route.get("/ ontact_informations", AppController.getContactInformation);
+  route.get("/contact_informations", AppController.getContactInformation);
 };
 
 export const appRuning = async (route: FastifyInstance) => {
