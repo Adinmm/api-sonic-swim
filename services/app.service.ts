@@ -114,6 +114,7 @@ export const updateContactInformation = async (
 };
 
 export const updateUser = async (id: string, data: UserModel) => {
+  const updatePassword = await passwordHash(data.password || "");
   const isEmpty = await prisma.user.count();
   if (isEmpty === 0) {
     throw new Error("User Not Found");
@@ -123,12 +124,15 @@ export const updateUser = async (id: string, data: UserModel) => {
     where: {
       id: id,
     },
-    data,
+    data: {
+      username: data.username,
+      password: updatePassword,
+    },
   });
-  if(!result){
+  if (!result) {
     throw new Error("User not found");
   }
-  return result
+  return result;
 };
 
 export const deleteClass = async (id: string) => {
