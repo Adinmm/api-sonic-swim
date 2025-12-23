@@ -27,12 +27,17 @@ export const appRoute = async (route: FastifyInstance) => {
   route.get("/classes", AppController.getClass);
   route.get("/contact_informations", AppController.getContactInformation);
 
-  route.patch("/contact_information/:id",{
+  route.patch("/contact_information/:id", {
     preHandler: AppMiddleware.validation(ContactInformationSchema),
-    handler: AppController.updateContactInformation
-  })
+    handler: AppController.updateContactInformation,
+  });
 
-  route.delete("/class/:id", AppController.deleteClass)
+  route.patch("/user/:id", {
+    preHandler: AppMiddleware.validation(UserSchema),
+    handler: AppController.updateUser,
+  });
+
+  route.delete("/class/:id", AppController.deleteClass);
 };
 
 export const appRuning = async (route: FastifyInstance) => {

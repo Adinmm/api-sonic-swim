@@ -113,14 +113,32 @@ export const updateContactInformation = async (
   return result;
 };
 
+export const updateUser = async (id: string, data: UserModel) => {
+  const isEmpty = await prisma.user.count();
+  if (isEmpty === 0) {
+    throw new Error("User Not Found");
+  }
+
+  const result = await prisma.user.update({
+    where: {
+      id: id,
+    },
+    data,
+  });
+  if(!result){
+    throw new Error("User not found");
+  }
+  return result
+};
+
 export const deleteClass = async (id: string) => {
   const result = await prisma.kelas.delete({
     where: {
       id,
     },
   });
-  if (!result){
+  if (!result) {
     throw new Error("Class not found");
   }
-  return result
+  return result;
 };
