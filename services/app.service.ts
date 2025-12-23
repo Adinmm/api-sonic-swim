@@ -119,7 +119,6 @@ export const updateUser = async (id: string, data: UserModel) => {
   if (isEmpty === 0) {
     throw new Error("User Not Found");
   }
-
   const result = await prisma.user.update({
     where: {
       id: id,
