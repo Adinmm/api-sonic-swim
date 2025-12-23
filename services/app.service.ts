@@ -88,7 +88,7 @@ export const getContactInformation = async () => {
   if (isEmty === 0) {
     throw new Error("Contact Information not found");
   }
-  const result = await prisma.contact_information.findMany();
+  const result = await prisma.contact_information.findFirst();
   if (!result) {
     throw new Error("Contact Information not found");
   }
