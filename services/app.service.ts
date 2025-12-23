@@ -35,6 +35,14 @@ export const getClasses = async () => {
 };
 
 export const createUser = async (data: UserModel) => {
+  const user = await prisma.user.findUnique({
+    where:{
+      username: data.username
+    }
+  })
+  if (user) {
+    throw new Error("User already created");
+  }
   const password = await passwordHash(data.password);
   const result = await prisma.user.create({
     data: {

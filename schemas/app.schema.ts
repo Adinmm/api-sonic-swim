@@ -23,3 +23,10 @@ export const ContactInformationSchema = z.object({
 });
 
 export type ContactInformationModel = z.infer<typeof ContactInformationSchema>;
+
+export const LoginSchema = z.object({
+  username: z.string().min(1, "Username is required"),
+  password: z.string().min(8, "Password minimal 8 character"),
+})
+
+export type LoginModel = z.infer<typeof LoginSchema>

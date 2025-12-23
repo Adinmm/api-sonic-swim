@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 
 import { errorHandling } from "./lib/errorHandling";
 import { appRoute, appRuning } from "./routes/app.route";
+import { authRoute } from "./routes/auth.route";
 
 dotenv.config();
 const app = Fastify();
@@ -15,6 +16,7 @@ app.register(cors, {
 
 
 app.register(appRoute, { prefix: "/api" });
+app.register(authRoute, { prefix: "/auth" });
 app.register(appRuning);
 
 errorHandling(app);
