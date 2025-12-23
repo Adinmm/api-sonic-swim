@@ -52,3 +52,9 @@ export const updateContactInformation = async(request: FastifyRequest<{Body: Con
   await AppService.updateContactInformation(input, id)
   return createdOrUpdated(reply, "Contact Information updated successfully");
 }
+
+export const deleteClass = async(request: FastifyRequest<{ Params: {id: string}}>, reply: FastifyReply)=>{
+  const id = request.params.id
+  await AppService.deleteClass(id)
+  return createdOrUpdated(reply, "Class deleted successfully");
+}

@@ -31,6 +31,8 @@ export const appRoute = async (route: FastifyInstance) => {
     preHandler: AppMiddleware.validation(ContactInformationSchema),
     handler: AppController.updateContactInformation
   })
+
+  route.delete("/class/:id", AppController.deleteClass)
 };
 
 export const appRuning = async (route: FastifyInstance) => {

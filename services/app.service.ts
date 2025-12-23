@@ -67,15 +67,13 @@ export const getUserById = async (id: string) => {
   return rest;
 };
 
-export const createContactInformation = async (
-  data: Contact
-) => {
+export const createContactInformation = async (data: Contact) => {
   const isEmpty = await prisma.contact_information.count();
   if (isEmpty > 0) {
     throw new Error("Contact Information already created");
   }
   const result = await prisma.contact_information.create({
-    data
+    data,
   });
   if (!result) {
     throw new Error("Contact Information not created");
@@ -113,4 +111,16 @@ export const updateContactInformation = async (
     throw new Error("Contact Information not found");
   }
   return result;
+};
+
+export const deleteClass = async (id: string) => {
+  const result = await prisma.kelas.delete({
+    where: {
+      id,
+    },
+  });
+  if (!result){
+    throw new Error("Class not found");
+  }
+  return result
 };
