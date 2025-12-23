@@ -16,13 +16,19 @@ export const UserSchema = z.object({
 export type UserModel = z.infer<typeof UserSchema>;
 
 export const ContactInformationSchema = z.object({
-  address: z.string().min(1, "Address is required"),
-  phone: z.string().min(1, "Phone is required"),
-  email: z.string().min(1, "Email is required"),
-  operational_time: z.array(z.string()).min(1, "Operational time is required"),
+  address: z.string().min(1, "Address is required").optional(),
+  phone: z.string().min(1, "Phone is required").optional(),
+  email: z.string().min(1, "Email is required").optional(),
+  operational_time: z.array(z.string()).min(1, "Operational time is required").optional()
 });
 
 export type ContactInformationModel = z.infer<typeof ContactInformationSchema>;
+export type Contact = {
+  address: string
+  phone: string
+  email: string
+  operational_time: string[]
+}
 
 export const LoginSchema = z.object({
   username: z.string().min(1, "Username is required"),

@@ -2,6 +2,7 @@ import prisma from "../configs/prisma";
 import { passwordHash } from "../lib/passwordHash";
 import {
   ClassModel,
+  Contact,
   ContactInformationModel,
   UserModel,
 } from "../schemas/app.schema";
@@ -36,10 +37,10 @@ export const getClasses = async () => {
 
 export const createUser = async (data: UserModel) => {
   const user = await prisma.user.findUnique({
-    where:{
-      username: data.username
-    }
-  })
+    where: {
+      username: data.username,
+    },
+  });
   if (user) {
     throw new Error("User already created");
   }
@@ -67,14 +68,14 @@ export const getUserById = async (id: string) => {
 };
 
 export const createContactInformation = async (
-  data: ContactInformationModel
+  data: Contact
 ) => {
   const isEmpty = await prisma.contact_information.count();
   if (isEmpty > 0) {
     throw new Error("Contact Information already created");
   }
   const result = await prisma.contact_information.create({
-    data,
+    data
   });
   if (!result) {
     throw new Error("Contact Information not created");
@@ -82,7 +83,7 @@ export const createContactInformation = async (
   return result;
 };
 
-export const getContactInformation = async()=>{
+export const getContactInformation = async () => {
   const isEmty = await prisma.contact_information.count();
   if (isEmty === 0) {
     throw new Error("Contact Information not found");
@@ -92,5 +93,24 @@ export const getContactInformation = async()=>{
     throw new Error("Contact Information not found");
   }
   return result;
+};
 
-}
+export const updateContactInformation = async (
+  data: ContactInformationModel,
+  id: string
+) => {
+  const isEmty = await prisma.contact_information.count();
+  if (isEmty === 0) {
+    throw new Error("Contact Information not found");
+  }
+  const result = await prisma.contact_information.update({
+    where: {
+      id: id,
+    },
+    data,
+  });
+  if (!result) {
+    throw new Error("Contact Information not found");
+  }
+  return result;
+};
