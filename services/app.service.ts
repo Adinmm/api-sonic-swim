@@ -44,7 +44,7 @@ export const createUser = async (data: UserModel) => {
   if (user) {
     throw new Error("User already created");
   }
-  const password = await passwordHash(data.password);
+  const password = await passwordHash(data.password || "");
   const result = await prisma.user.create({
     data: {
       username: data.username,
