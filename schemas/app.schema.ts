@@ -36,3 +36,12 @@ export const LoginSchema = z.object({
 })
 
 export type LoginModel = z.infer<typeof LoginSchema>
+
+export const ImageSchema = z.object({
+  url: z.string().min(1, "Url is required"),
+  image_public_id: z.string().min(1, "Image public id is required"),
+  category: z.string().min(1, "Category is required"),
+  description: z.string().min(1, "Description is required"),
+})
+
+export type ImageModel = z.infer<typeof ImageSchema>

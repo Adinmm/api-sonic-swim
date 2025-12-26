@@ -3,6 +3,7 @@ import {
   ClassModel,
   Contact,
   ContactInformationModel,
+  ImageModel,
   UserModel,
 } from "../schemas/app.schema";
 import * as AppService from "../services/app.service";
@@ -127,11 +128,11 @@ export const uploadImage = async (
 };
 
 export const createImageUrl = async (
-  request: FastifyRequest<{ Body: { url: string, image_public_id: string } }>,
+  request: FastifyRequest<{ Body: ImageModel }>,
   reply: FastifyReply
 ) => {
   const input = request.body;
-  await AppService.createImageUrl(input.url, input.image_public_id);
+  await AppService.createImageUrl(input);
   return createdOrUpdated(reply, "Image url created successfully");
 };
 

@@ -6,6 +6,7 @@ import {
   ClassModel,
   Contact,
   ContactInformationModel,
+  ImageModel,
   UserModel,
 } from "../schemas/app.schema";
 
@@ -174,15 +175,12 @@ export const deleteImage = async (id: string) => {
   return removeImageDB;
 };
 
-export const createImageUrl = async (url: string, image_public_id: string) => {
+export const createImageUrl = async (data: ImageModel) => {
   const result = await prisma.image.create({
-    data: {
-      url: url,
-      image_public_id
-    },
-  })
-  if(!result){
+    data,
+  });
+  if (!result) {
     throw new Error("failed to create image url");
   }
-  return result
+  return result;
 };

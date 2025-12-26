@@ -28,6 +28,8 @@ export type ImageMinAggregateOutputType = {
   id: string | null
   image_public_id: string | null
   url: string | null
+  category: string | null
+  description: string | null
   created_at: Date | null
 }
 
@@ -35,6 +37,8 @@ export type ImageMaxAggregateOutputType = {
   id: string | null
   image_public_id: string | null
   url: string | null
+  category: string | null
+  description: string | null
   created_at: Date | null
 }
 
@@ -42,6 +46,8 @@ export type ImageCountAggregateOutputType = {
   id: number
   image_public_id: number
   url: number
+  category: number
+  description: number
   created_at: number
   _all: number
 }
@@ -51,6 +57,8 @@ export type ImageMinAggregateInputType = {
   id?: true
   image_public_id?: true
   url?: true
+  category?: true
+  description?: true
   created_at?: true
 }
 
@@ -58,6 +66,8 @@ export type ImageMaxAggregateInputType = {
   id?: true
   image_public_id?: true
   url?: true
+  category?: true
+  description?: true
   created_at?: true
 }
 
@@ -65,6 +75,8 @@ export type ImageCountAggregateInputType = {
   id?: true
   image_public_id?: true
   url?: true
+  category?: true
+  description?: true
   created_at?: true
   _all?: true
 }
@@ -145,6 +157,8 @@ export type ImageGroupByOutputType = {
   id: string
   image_public_id: string
   url: string
+  category: string
+  description: string
   created_at: Date
   _count: ImageCountAggregateOutputType | null
   _min: ImageMinAggregateOutputType | null
@@ -173,6 +187,8 @@ export type imageWhereInput = {
   id?: Prisma.StringFilter<"image"> | string
   image_public_id?: Prisma.StringFilter<"image"> | string
   url?: Prisma.StringFilter<"image"> | string
+  category?: Prisma.StringFilter<"image"> | string
+  description?: Prisma.StringFilter<"image"> | string
   created_at?: Prisma.DateTimeFilter<"image"> | Date | string
 }
 
@@ -180,6 +196,8 @@ export type imageOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   image_public_id?: Prisma.SortOrder
   url?: Prisma.SortOrder
+  category?: Prisma.SortOrder
+  description?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
 }
 
@@ -190,6 +208,8 @@ export type imageWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.imageWhereInput | Prisma.imageWhereInput[]
   image_public_id?: Prisma.StringFilter<"image"> | string
   url?: Prisma.StringFilter<"image"> | string
+  category?: Prisma.StringFilter<"image"> | string
+  description?: Prisma.StringFilter<"image"> | string
   created_at?: Prisma.DateTimeFilter<"image"> | Date | string
 }, "id">
 
@@ -197,6 +217,8 @@ export type imageOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   image_public_id?: Prisma.SortOrder
   url?: Prisma.SortOrder
+  category?: Prisma.SortOrder
+  description?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   _count?: Prisma.imageCountOrderByAggregateInput
   _max?: Prisma.imageMaxOrderByAggregateInput
@@ -210,6 +232,8 @@ export type imageScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"image"> | string
   image_public_id?: Prisma.StringWithAggregatesFilter<"image"> | string
   url?: Prisma.StringWithAggregatesFilter<"image"> | string
+  category?: Prisma.StringWithAggregatesFilter<"image"> | string
+  description?: Prisma.StringWithAggregatesFilter<"image"> | string
   created_at?: Prisma.DateTimeWithAggregatesFilter<"image"> | Date | string
 }
 
@@ -217,6 +241,8 @@ export type imageCreateInput = {
   id?: string
   image_public_id: string
   url: string
+  category: string
+  description: string
   created_at?: Date | string
 }
 
@@ -224,6 +250,8 @@ export type imageUncheckedCreateInput = {
   id?: string
   image_public_id: string
   url: string
+  category: string
+  description: string
   created_at?: Date | string
 }
 
@@ -231,6 +259,8 @@ export type imageUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   image_public_id?: Prisma.StringFieldUpdateOperationsInput | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -238,6 +268,8 @@ export type imageUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   image_public_id?: Prisma.StringFieldUpdateOperationsInput | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -245,6 +277,8 @@ export type imageCreateManyInput = {
   id?: string
   image_public_id: string
   url: string
+  category: string
+  description: string
   created_at?: Date | string
 }
 
@@ -252,6 +286,8 @@ export type imageUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   image_public_id?: Prisma.StringFieldUpdateOperationsInput | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -259,6 +295,8 @@ export type imageUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   image_public_id?: Prisma.StringFieldUpdateOperationsInput | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -266,6 +304,8 @@ export type imageCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   image_public_id?: Prisma.SortOrder
   url?: Prisma.SortOrder
+  category?: Prisma.SortOrder
+  description?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
 }
 
@@ -273,6 +313,8 @@ export type imageMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   image_public_id?: Prisma.SortOrder
   url?: Prisma.SortOrder
+  category?: Prisma.SortOrder
+  description?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
 }
 
@@ -280,6 +322,8 @@ export type imageMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   image_public_id?: Prisma.SortOrder
   url?: Prisma.SortOrder
+  category?: Prisma.SortOrder
+  description?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
 }
 
@@ -289,6 +333,8 @@ export type imageSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   id?: boolean
   image_public_id?: boolean
   url?: boolean
+  category?: boolean
+  description?: boolean
   created_at?: boolean
 }, ExtArgs["result"]["image"]>
 
@@ -296,6 +342,8 @@ export type imageSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   id?: boolean
   image_public_id?: boolean
   url?: boolean
+  category?: boolean
+  description?: boolean
   created_at?: boolean
 }, ExtArgs["result"]["image"]>
 
@@ -303,6 +351,8 @@ export type imageSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   id?: boolean
   image_public_id?: boolean
   url?: boolean
+  category?: boolean
+  description?: boolean
   created_at?: boolean
 }, ExtArgs["result"]["image"]>
 
@@ -310,10 +360,12 @@ export type imageSelectScalar = {
   id?: boolean
   image_public_id?: boolean
   url?: boolean
+  category?: boolean
+  description?: boolean
   created_at?: boolean
 }
 
-export type imageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "image_public_id" | "url" | "created_at", ExtArgs["result"]["image"]>
+export type imageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "image_public_id" | "url" | "category" | "description" | "created_at", ExtArgs["result"]["image"]>
 
 export type $imagePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "image"
@@ -322,6 +374,8 @@ export type $imagePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     id: string
     image_public_id: string
     url: string
+    category: string
+    description: string
     created_at: Date
   }, ExtArgs["result"]["image"]>
   composites: {}
@@ -749,6 +803,8 @@ export interface imageFieldRefs {
   readonly id: Prisma.FieldRef<"image", 'String'>
   readonly image_public_id: Prisma.FieldRef<"image", 'String'>
   readonly url: Prisma.FieldRef<"image", 'String'>
+  readonly category: Prisma.FieldRef<"image", 'String'>
+  readonly description: Prisma.FieldRef<"image", 'String'>
   readonly created_at: Prisma.FieldRef<"image", 'DateTime'>
 }
     

@@ -38,5 +38,7 @@ model image {
   id              String   @id @default(uuid())
   image_public_id String
   url             String
+  category        String
+  description     String
   created_at      DateTime @default(now())
 }
