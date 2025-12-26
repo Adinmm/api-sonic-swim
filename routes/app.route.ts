@@ -30,6 +30,8 @@ export const appRoute = async (route: FastifyInstance) => {
   route.get("/classes", AppController.getClass);
   route.get("/contact_informations", AppController.getContactInformation);
 
+  route.get("/images", AppController.getImages);
+
   route.patch("/contact_information/:id", {
     preHandler: AppMiddleware.validation(ContactInformationSchema),
     handler: AppController.updateContactInformation,

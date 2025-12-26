@@ -144,3 +144,8 @@ export const deleteImage = async (
   await AppService.deleteImage(id);
   return createdOrUpdated(reply, "Image deleted successfully");
 };
+
+export const getImages = async(request: FastifyRequest, reply: FastifyReply)=>{
+  const result = await AppService.getImages();
+  return ok(reply, "Images retrived successfully", result);
+}

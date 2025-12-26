@@ -184,3 +184,11 @@ export const createImageUrl = async (data: ImageModel) => {
   }
   return result;
 };
+
+export const getImages = async()=>{
+  const result = await prisma.image.findMany()
+  if (!result) {
+    throw new Error("failed to get image");
+  }
+  return result;
+}
