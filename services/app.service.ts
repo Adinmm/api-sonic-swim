@@ -1,3 +1,5 @@
+import { error } from "console";
+import cloudinary from "../configs/cloudinary";
 import prisma from "../configs/prisma";
 import { passwordHash } from "../lib/passwordHash";
 import {
@@ -144,4 +146,43 @@ export const deleteClass = async (id: string) => {
     throw new Error("Class not found");
   }
   return result;
+};
+
+export const deleteImage = async (id: string) => {
+  const image = await prisma.image.findUnique({
+    where: {
+      id,
+    },
+  });
+  if (!image) {
+    throw new Error("Image not found");
+  }
+  const removeImage = await cloudinary.uploader.destroy(image.image_public_id);
+
+  if (!removeImage) {
+    throw new Error("Failed destroy image");
+  }
+
+  const removeImageDB = await prisma.image.delete({
+    where: {
+      id,
+    },
+  });
+  if (!removeImageDB) {
+    throw new Error("Failed delete image from database");
+  }
+  return removeImageDB;
+};
+
+export const createImageUrl = async (url: string, image_public_id: string) => {
+  const result = await prisma.image.create({
+    data: {
+      url: url,
+      image_public_id
+    },
+  })
+  if(!result){
+    throw new Error("failed to create image url");
+  }
+  return result
 };

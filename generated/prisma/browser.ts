@@ -32,3 +32,8 @@ export type kelas = Prisma.kelasModel
  * 
  */
 export type contact_information = Prisma.contact_informationModel
+/**
+ * Model image
+ * 
+ */
+export type image = Prisma.imageModel

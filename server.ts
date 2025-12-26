@@ -5,8 +5,10 @@ import dotenv from "dotenv";
 import { errorHandling } from "./lib/errorHandling";
 import { appRoute, appRuning } from "./routes/app.route";
 import { authRoute } from "./routes/auth.route";
+import multipart from "@fastify/multipart";
 
 dotenv.config();
+
 const app = Fastify();
 
 app.register(cors, {
@@ -14,7 +16,7 @@ app.register(cors, {
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
 });
 
-
+app.register(multipart);
 app.register(appRoute, { prefix: "/api" });
 app.register(authRoute, { prefix: "/auth" });
 app.register(appRuning);

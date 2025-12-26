@@ -386,7 +386,8 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 export const ModelName = {
   user: 'user',
   kelas: 'kelas',
-  contact_information: 'contact_information'
+  contact_information: 'contact_information',
+  image: 'image'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -402,7 +403,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "kelas" | "contact_information"
+    modelProps: "user" | "kelas" | "contact_information" | "image"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -628,6 +629,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    image: {
+      payload: Prisma.$imagePayload<ExtArgs>
+      fields: Prisma.imageFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.imageFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$imagePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.imageFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$imagePayload>
+        }
+        findFirst: {
+          args: Prisma.imageFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$imagePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.imageFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$imagePayload>
+        }
+        findMany: {
+          args: Prisma.imageFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$imagePayload>[]
+        }
+        create: {
+          args: Prisma.imageCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$imagePayload>
+        }
+        createMany: {
+          args: Prisma.imageCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.imageCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$imagePayload>[]
+        }
+        delete: {
+          args: Prisma.imageDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$imagePayload>
+        }
+        update: {
+          args: Prisma.imageUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$imagePayload>
+        }
+        deleteMany: {
+          args: Prisma.imageDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.imageUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.imageUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$imagePayload>[]
+        }
+        upsert: {
+          args: Prisma.imageUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$imagePayload>
+        }
+        aggregate: {
+          args: Prisma.ImageAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateImage>
+        }
+        groupBy: {
+          args: Prisma.imageGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ImageGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.imageCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ImageCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -701,6 +776,16 @@ export const Contact_informationScalarFieldEnum = {
 } as const
 
 export type Contact_informationScalarFieldEnum = (typeof Contact_informationScalarFieldEnum)[keyof typeof Contact_informationScalarFieldEnum]
+
+
+export const ImageScalarFieldEnum = {
+  id: 'id',
+  image_public_id: 'image_public_id',
+  url: 'url',
+  created_at: 'created_at'
+} as const
+
+export type ImageScalarFieldEnum = (typeof ImageScalarFieldEnum)[keyof typeof ImageScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -864,6 +949,7 @@ export type GlobalOmitConfig = {
   user?: Prisma.userOmit
   kelas?: Prisma.kelasOmit
   contact_information?: Prisma.contact_informationOmit
+  image?: Prisma.imageOmit
 }
 
 /* Types for Logging */

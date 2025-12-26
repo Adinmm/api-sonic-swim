@@ -53,7 +53,8 @@ export const AnyNull = runtime.AnyNull
 export const ModelName = {
   user: 'user',
   kelas: 'kelas',
-  contact_information: 'contact_information'
+  contact_information: 'contact_information',
+  image: 'image'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -106,6 +107,16 @@ export const Contact_informationScalarFieldEnum = {
 } as const
 
 export type Contact_informationScalarFieldEnum = (typeof Contact_informationScalarFieldEnum)[keyof typeof Contact_informationScalarFieldEnum]
+
+
+export const ImageScalarFieldEnum = {
+  id: 'id',
+  image_public_id: 'image_public_id',
+  url: 'url',
+  created_at: 'created_at'
+} as const
+
+export type ImageScalarFieldEnum = (typeof ImageScalarFieldEnum)[keyof typeof ImageScalarFieldEnum]
 
 
 export const SortOrder = {

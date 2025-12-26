@@ -23,6 +23,9 @@ export const appRoute = async (route: FastifyInstance) => {
     handler: AppController.createContactInformation,
   });
 
+  route.post("/image", AppController.uploadImage);
+  route.post("/image_url", AppController.createImageUrl);
+
   route.get("/user/:id", AppController.getUserById);
   route.get("/classes", AppController.getClass);
   route.get("/contact_informations", AppController.getContactInformation);
@@ -38,6 +41,8 @@ export const appRoute = async (route: FastifyInstance) => {
   });
 
   route.delete("/class/:id", AppController.deleteClass);
+
+  route.delete("/image/:id", AppController.deleteImage);
 };
 
 export const appRuning = async (route: FastifyInstance) => {
