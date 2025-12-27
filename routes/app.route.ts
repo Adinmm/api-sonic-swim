@@ -65,6 +65,8 @@ export const appRoute = async (route: FastifyInstance) => {
   route.delete("/coach/:id", AppController.deleteCoach);
 
   route.delete("/faq_question/:id", AppController.deleteFaq);
+
+  route.delete("/faq_category/:id", AppController.deleteFaqCategory);
 };
 
 export const appRuning = async (route: FastifyInstance) => {

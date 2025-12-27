@@ -313,3 +313,15 @@ export const deleteFaq = async (id: string) => {
   }
   return result;
 };
+
+export const deleteFaqCategory = async (id: string) => {
+  const result = await prisma.faq_category.delete({
+    where: {
+      id,
+    },
+  });
+  if (!result) {
+    throw new Error("failed to delete faq category");
+  }
+  return result;
+};

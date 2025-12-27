@@ -222,3 +222,15 @@ export const deleteFaq = async (
   await AppService.deleteFaq(id);
   return createdOrUpdated(reply, "Faq deleted successfully");
 };
+
+export const deleteFaqCategory = async (
+  request: FastifyRequest<{ Params: { id: string } }>,
+  reply: FastifyReply
+) => {
+  const id = request.params.id;
+  if (!id) {
+    return badRequest(reply, "id is required");
+  }
+  await AppService.deleteFaqCategory(id);
+  return createdOrUpdated(reply, "Faq Category deleted successfully");
+};
