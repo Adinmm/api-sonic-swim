@@ -4,8 +4,10 @@ import prisma from "../configs/prisma";
 import { passwordHash } from "../lib/passwordHash";
 import {
   ClassModel,
+  CoachModel,
   Contact,
   ContactInformationModel,
+  FaqQuestionModel,
   ImageModel,
   UserModel,
 } from "../schemas/app.schema";
@@ -185,10 +187,92 @@ export const createImageUrl = async (data: ImageModel) => {
   return result;
 };
 
-export const getImages = async()=>{
-  const result = await prisma.image.findMany()
+export const getImages = async () => {
+  const result = await prisma.image.findMany();
   if (!result) {
     throw new Error("failed to get image");
   }
   return result;
-}
+};
+
+export const uploadImage = async (file: any, folderName: string) => {
+  const result = await new Promise<any>((resolve, reject) => {
+    const uploadStream = cloudinary.uploader.upload_stream(
+      {
+        folder: folderName,
+      },
+      (error, result) => {
+        if (error) reject(error);
+        else resolve(result);
+      }
+    );
+    file.file.pipe(uploadStream);
+  });
+  if (!result) {
+    throw new Error("failed to upload image");
+  }
+  const data = {
+    public_id: result.public_id,
+    image_url: result.secure_url,
+  };
+  return data;
+};
+
+export const createCoach = async (data: CoachModel) => {
+  const result = await prisma.coach.create({
+    data,
+  });
+  if (!result) {
+    throw new Error("failed to create coach");
+  }
+  return result;
+};
+
+export const getCoaches = async () => {
+  const result = await prisma.coach.findMany();
+  if (!result) {
+    throw new Error("failed to get coaches");
+  }
+  return result;
+};
+export const createFaqCategory = async (data: { category: string }) => {
+  const result = await prisma.faq_category.create({
+    data,
+  });
+  if (!result) {
+    throw new Error("failed to create faq category");
+  }
+  return result;
+};
+
+export const getFaqCategories = async () => {
+  const result = await prisma.faq_category.findMany({
+    select: {
+      id: true,
+      category: true,
+      createdAt: true,
+      questions: {
+        select: {
+          id: true,
+          question: true,
+          answer: true,
+          createdAt: true,
+        },
+      },
+    },
+  });
+  if (!result) {
+    throw new Error("failed to get faq categories");
+  }
+  return result;
+};
+
+export const createFaqQuestion = async (data: FaqQuestionModel) => {
+  const result = await prisma.faq_question.create({
+    data,
+  });
+  if (!result) {
+    throw new Error("failed to create faq question");
+  }
+  return result;
+};

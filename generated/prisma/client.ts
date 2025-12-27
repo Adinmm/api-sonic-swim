@@ -57,3 +57,18 @@ export type contact_information = Prisma.contact_informationModel
  * 
  */
 export type image = Prisma.imageModel
+/**
+ * Model coach
+ * 
+ */
+export type coach = Prisma.coachModel
+/**
+ * Model faq_category
+ * 
+ */
+export type faq_category = Prisma.faq_categoryModel
+/**
+ * Model faq_question
+ * 
+ */
+export type faq_question = Prisma.faq_questionModel

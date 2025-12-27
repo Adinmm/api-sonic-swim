@@ -42,3 +42,31 @@ model image {
   description     String
   created_at      DateTime @default(now())
 }
+
+model coach {
+  id              String   @id @default(uuid())
+  name            String
+  url             String
+  image_public_id String
+  experience      String
+  specialization  String
+  createdAt       DateTime @default(now())
+}
+
+model faq_category {
+  id        String   @id @default(uuid())
+  category  String
+  createdAt DateTime @default(now())
+
+  questions faq_question[]
+}
+
+model faq_question {
+  id         String   @id @default(uuid())
+  question   String
+  answer     String
+  categoryId String
+  createdAt  DateTime @default(now())
+
+  category faq_category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+}

@@ -54,7 +54,10 @@ export const ModelName = {
   user: 'user',
   kelas: 'kelas',
   contact_information: 'contact_information',
-  image: 'image'
+  image: 'image',
+  coach: 'coach',
+  faq_category: 'faq_category',
+  faq_question: 'faq_question'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -119,6 +122,39 @@ export const ImageScalarFieldEnum = {
 } as const
 
 export type ImageScalarFieldEnum = (typeof ImageScalarFieldEnum)[keyof typeof ImageScalarFieldEnum]
+
+
+export const CoachScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  url: 'url',
+  image_public_id: 'image_public_id',
+  experience: 'experience',
+  specialization: 'specialization',
+  createdAt: 'createdAt'
+} as const
+
+export type CoachScalarFieldEnum = (typeof CoachScalarFieldEnum)[keyof typeof CoachScalarFieldEnum]
+
+
+export const Faq_categoryScalarFieldEnum = {
+  id: 'id',
+  category: 'category',
+  createdAt: 'createdAt'
+} as const
+
+export type Faq_categoryScalarFieldEnum = (typeof Faq_categoryScalarFieldEnum)[keyof typeof Faq_categoryScalarFieldEnum]
+
+
+export const Faq_questionScalarFieldEnum = {
+  id: 'id',
+  question: 'question',
+  answer: 'answer',
+  categoryId: 'categoryId',
+  createdAt: 'createdAt'
+} as const
+
+export type Faq_questionScalarFieldEnum = (typeof Faq_questionScalarFieldEnum)[keyof typeof Faq_questionScalarFieldEnum]
 
 
 export const SortOrder = {

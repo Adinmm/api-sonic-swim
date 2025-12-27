@@ -387,7 +387,10 @@ export const ModelName = {
   user: 'user',
   kelas: 'kelas',
   contact_information: 'contact_information',
-  image: 'image'
+  image: 'image',
+  coach: 'coach',
+  faq_category: 'faq_category',
+  faq_question: 'faq_question'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -403,7 +406,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "kelas" | "contact_information" | "image"
+    modelProps: "user" | "kelas" | "contact_information" | "image" | "coach" | "faq_category" | "faq_question"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -703,6 +706,228 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    coach: {
+      payload: Prisma.$coachPayload<ExtArgs>
+      fields: Prisma.coachFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.coachFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$coachPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.coachFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$coachPayload>
+        }
+        findFirst: {
+          args: Prisma.coachFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$coachPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.coachFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$coachPayload>
+        }
+        findMany: {
+          args: Prisma.coachFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$coachPayload>[]
+        }
+        create: {
+          args: Prisma.coachCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$coachPayload>
+        }
+        createMany: {
+          args: Prisma.coachCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.coachCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$coachPayload>[]
+        }
+        delete: {
+          args: Prisma.coachDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$coachPayload>
+        }
+        update: {
+          args: Prisma.coachUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$coachPayload>
+        }
+        deleteMany: {
+          args: Prisma.coachDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.coachUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.coachUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$coachPayload>[]
+        }
+        upsert: {
+          args: Prisma.coachUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$coachPayload>
+        }
+        aggregate: {
+          args: Prisma.CoachAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCoach>
+        }
+        groupBy: {
+          args: Prisma.coachGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CoachGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.coachCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CoachCountAggregateOutputType> | number
+        }
+      }
+    }
+    faq_category: {
+      payload: Prisma.$faq_categoryPayload<ExtArgs>
+      fields: Prisma.faq_categoryFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.faq_categoryFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$faq_categoryPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.faq_categoryFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$faq_categoryPayload>
+        }
+        findFirst: {
+          args: Prisma.faq_categoryFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$faq_categoryPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.faq_categoryFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$faq_categoryPayload>
+        }
+        findMany: {
+          args: Prisma.faq_categoryFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$faq_categoryPayload>[]
+        }
+        create: {
+          args: Prisma.faq_categoryCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$faq_categoryPayload>
+        }
+        createMany: {
+          args: Prisma.faq_categoryCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.faq_categoryCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$faq_categoryPayload>[]
+        }
+        delete: {
+          args: Prisma.faq_categoryDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$faq_categoryPayload>
+        }
+        update: {
+          args: Prisma.faq_categoryUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$faq_categoryPayload>
+        }
+        deleteMany: {
+          args: Prisma.faq_categoryDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.faq_categoryUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.faq_categoryUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$faq_categoryPayload>[]
+        }
+        upsert: {
+          args: Prisma.faq_categoryUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$faq_categoryPayload>
+        }
+        aggregate: {
+          args: Prisma.Faq_categoryAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateFaq_category>
+        }
+        groupBy: {
+          args: Prisma.faq_categoryGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Faq_categoryGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.faq_categoryCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Faq_categoryCountAggregateOutputType> | number
+        }
+      }
+    }
+    faq_question: {
+      payload: Prisma.$faq_questionPayload<ExtArgs>
+      fields: Prisma.faq_questionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.faq_questionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$faq_questionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.faq_questionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$faq_questionPayload>
+        }
+        findFirst: {
+          args: Prisma.faq_questionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$faq_questionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.faq_questionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$faq_questionPayload>
+        }
+        findMany: {
+          args: Prisma.faq_questionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$faq_questionPayload>[]
+        }
+        create: {
+          args: Prisma.faq_questionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$faq_questionPayload>
+        }
+        createMany: {
+          args: Prisma.faq_questionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.faq_questionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$faq_questionPayload>[]
+        }
+        delete: {
+          args: Prisma.faq_questionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$faq_questionPayload>
+        }
+        update: {
+          args: Prisma.faq_questionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$faq_questionPayload>
+        }
+        deleteMany: {
+          args: Prisma.faq_questionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.faq_questionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.faq_questionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$faq_questionPayload>[]
+        }
+        upsert: {
+          args: Prisma.faq_questionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$faq_questionPayload>
+        }
+        aggregate: {
+          args: Prisma.Faq_questionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateFaq_question>
+        }
+        groupBy: {
+          args: Prisma.faq_questionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Faq_questionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.faq_questionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Faq_questionCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -788,6 +1013,39 @@ export const ImageScalarFieldEnum = {
 } as const
 
 export type ImageScalarFieldEnum = (typeof ImageScalarFieldEnum)[keyof typeof ImageScalarFieldEnum]
+
+
+export const CoachScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  url: 'url',
+  image_public_id: 'image_public_id',
+  experience: 'experience',
+  specialization: 'specialization',
+  createdAt: 'createdAt'
+} as const
+
+export type CoachScalarFieldEnum = (typeof CoachScalarFieldEnum)[keyof typeof CoachScalarFieldEnum]
+
+
+export const Faq_categoryScalarFieldEnum = {
+  id: 'id',
+  category: 'category',
+  createdAt: 'createdAt'
+} as const
+
+export type Faq_categoryScalarFieldEnum = (typeof Faq_categoryScalarFieldEnum)[keyof typeof Faq_categoryScalarFieldEnum]
+
+
+export const Faq_questionScalarFieldEnum = {
+  id: 'id',
+  question: 'question',
+  answer: 'answer',
+  categoryId: 'categoryId',
+  createdAt: 'createdAt'
+} as const
+
+export type Faq_questionScalarFieldEnum = (typeof Faq_questionScalarFieldEnum)[keyof typeof Faq_questionScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -952,6 +1210,9 @@ export type GlobalOmitConfig = {
   kelas?: Prisma.kelasOmit
   contact_information?: Prisma.contact_informationOmit
   image?: Prisma.imageOmit
+  coach?: Prisma.coachOmit
+  faq_category?: Prisma.faq_categoryOmit
+  faq_question?: Prisma.faq_questionOmit
 }
 
 /* Types for Logging */

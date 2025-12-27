@@ -1,8 +1,10 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import {
   ClassModel,
+  CoachModel,
   Contact,
   ContactInformationModel,
+  FaqQuestionModel,
   ImageModel,
   UserModel,
 } from "../schemas/app.schema";
@@ -103,26 +105,27 @@ export const uploadImage = async (
 ) => {
   const file = await request.file();
   if (!file) return badRequest(reply, "file is required");
-  const uploadResult = await new Promise<any>((resolve, reject) => {
-    const uploadStream = cloudinary.uploader.upload_stream(
-      {
-        folder: "gallerys",
-      },
-      (error, result) => {
-        if (error) reject(error);
-        else resolve(result);
-      }
-    );
+  // const uploadResult = await new Promise<any>((resolve, reject) => {
+  //   const uploadStream = cloudinary.uploader.upload_stream(
+  //     {
+  //       folder: "gallerys",
+  //     },
+  //     (error, result) => {
+  //       if (error) reject(error);
+  //       else resolve(result);
+  //     }
+  //   );
 
-    file.file.pipe(uploadStream);
-  });
+  //   file.file.pipe(uploadStream);
+  // });
 
-  if (!uploadResult) return badRequest(reply, "Failed to upload image");
+  // if (!uploadResult) return badRequest(reply, "Failed to upload image");
 
-  const result = {
-    public_id: uploadResult.public_id,
-    image_url: uploadResult.secure_url,
-  };
+  // const result = {
+  //   public_id: uploadResult.public_id,
+  //   image_url: uploadResult.secure_url,
+  // };
+  const result = await AppService.uploadImage(file, "gallerys");
 
   return ok(reply, "Image uploaded successfully", result);
 };
@@ -145,7 +148,53 @@ export const deleteImage = async (
   return createdOrUpdated(reply, "Image deleted successfully");
 };
 
-export const getImages = async(request: FastifyRequest, reply: FastifyReply)=>{
+export const getImages = async (
+  request: FastifyRequest,
+  reply: FastifyReply
+) => {
   const result = await AppService.getImages();
   return ok(reply, "Images retrived successfully", result);
-}
+};
+
+export const createCoach = async (
+  request: FastifyRequest<{ Body: CoachModel }>,
+  reply: FastifyReply
+) => {
+  const input = request.body;
+  await AppService.createCoach(input);
+  return createdOrUpdated(reply, "Coach created successfully");
+};
+
+export const getCoaches = async (
+  request: FastifyRequest,
+  reply: FastifyReply
+) => {
+  const result = await AppService.getCoaches();
+  return ok(reply, "Coaches retrived successfully", result);
+};
+
+export const createFaqCategory = async (
+  request: FastifyRequest<{ Body: { category: string } }>,
+  reply: FastifyReply
+) => {
+  const input = request.body;
+  await AppService.createFaqCategory(input);
+  return createdOrUpdated(reply, "Faq Category created successfully");
+};
+
+export const getFaqCategories = async (
+  request: FastifyRequest,
+  reply: FastifyReply
+) => {
+  const result = await AppService.getFaqCategories();
+  return ok(reply, "Faq Categories retrived successfully", result);
+};
+
+export const createFaqQuestion = async (
+  request: FastifyRequest<{ Body: FaqQuestionModel }>,
+  reply: FastifyReply
+) => {
+  const input = request.body;
+  await AppService.createFaqQuestion(input);
+  return createdOrUpdated(reply, "Faq Question created successfully");
+};

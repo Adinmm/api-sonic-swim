@@ -20,7 +20,7 @@ const config: runtime.GetPrismaClientConfig = {
   "clientVersion": "7.2.0",
   "engineVersion": "0c8ef2ce45c83248ab3df073180d5eda9e8be7a3",
   "activeProvider": "postgresql",
-  "inlineSchema": "generator client {\n  provider = \"prisma-client\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel user {\n  id         String   @id @default(uuid())\n  username   String   @unique\n  password   String\n  role       String\n  created_at DateTime @default(now())\n}\n\nmodel kelas {\n  id          String   @id @default(uuid())\n  class_name  String\n  description String\n  schedule    String\n  price       String\n  class_items String[]\n  created_at  DateTime @default(now())\n}\n\nmodel contact_information {\n  id               String   @id @default(uuid())\n  address          String\n  phone            String\n  email            String\n  operational_time String[]\n  created_at       DateTime @default(now())\n}\n\nmodel image {\n  id              String   @id @default(uuid())\n  image_public_id String\n  url             String\n  category        String\n  description     String\n  created_at      DateTime @default(now())\n}\n",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel user {\n  id         String   @id @default(uuid())\n  username   String   @unique\n  password   String\n  role       String\n  created_at DateTime @default(now())\n}\n\nmodel kelas {\n  id          String   @id @default(uuid())\n  class_name  String\n  description String\n  schedule    String\n  price       String\n  class_items String[]\n  created_at  DateTime @default(now())\n}\n\nmodel contact_information {\n  id               String   @id @default(uuid())\n  address          String\n  phone            String\n  email            String\n  operational_time String[]\n  created_at       DateTime @default(now())\n}\n\nmodel image {\n  id              String   @id @default(uuid())\n  image_public_id String\n  url             String\n  category        String\n  description     String\n  created_at      DateTime @default(now())\n}\n\nmodel coach {\n  id              String   @id @default(uuid())\n  name            String\n  url             String\n  image_public_id String\n  experience      String\n  specialization  String\n  createdAt       DateTime @default(now())\n}\n\nmodel faq_category {\n  id        String   @id @default(uuid())\n  category  String\n  createdAt DateTime @default(now())\n\n  questions faq_question[]\n}\n\nmodel faq_question {\n  id         String   @id @default(uuid())\n  question   String\n  answer     String\n  categoryId String\n  createdAt  DateTime @default(now())\n\n  category faq_category @relation(fields: [categoryId], references: [id], onDelete: Cascade)\n}\n",
   "runtimeDataModel": {
     "models": {},
     "enums": {},
@@ -28,7 +28,7 @@ const config: runtime.GetPrismaClientConfig = {
   }
 }
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"user\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"username\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"role\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"created_at\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"kelas\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"class_name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"schedule\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"price\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"class_items\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"created_at\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"contact_information\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"address\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"phone\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"operational_time\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"created_at\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"image\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"image_public_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"url\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"category\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"created_at\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"user\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"username\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"role\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"created_at\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"kelas\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"class_name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"schedule\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"price\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"class_items\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"created_at\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"contact_information\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"address\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"phone\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"operational_time\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"created_at\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"image\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"image_public_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"url\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"category\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"created_at\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"coach\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"url\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"image_public_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"experience\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"specialization\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"faq_category\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"category\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"questions\",\"kind\":\"object\",\"type\":\"faq_question\",\"relationName\":\"faq_categoryTofaq_question\"}],\"dbName\":null},\"faq_question\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"question\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"answer\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"categoryId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"category\",\"kind\":\"object\",\"type\":\"faq_category\",\"relationName\":\"faq_categoryTofaq_question\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 
 async function decodeBase64AsWasm(wasmBase64: string): Promise<WebAssembly.Module> {
   const { Buffer } = await import('node:buffer')
@@ -213,6 +213,36 @@ export interface PrismaClient<
     * ```
     */
   get image(): Prisma.imageDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.coach`: Exposes CRUD operations for the **coach** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Coaches
+    * const coaches = await prisma.coach.findMany()
+    * ```
+    */
+  get coach(): Prisma.coachDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.faq_category`: Exposes CRUD operations for the **faq_category** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Faq_categories
+    * const faq_categories = await prisma.faq_category.findMany()
+    * ```
+    */
+  get faq_category(): Prisma.faq_categoryDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.faq_question`: Exposes CRUD operations for the **faq_question** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Faq_questions
+    * const faq_questions = await prisma.faq_question.findMany()
+    * ```
+    */
+  get faq_question(): Prisma.faq_questionDelegate<ExtArgs, { omit: OmitOpts }>;
 }
 
 export function getPrismaClientClass(): PrismaClientConstructor {
