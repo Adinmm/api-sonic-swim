@@ -210,3 +210,15 @@ export const deleteCoach = async (
   await AppService.deleteCoach(id);
   return createdOrUpdated(reply, "Coach deleted successfully");
 };
+
+export const deleteFaq = async (
+  request: FastifyRequest<{ Params: { id: string } }>,
+  reply: FastifyReply
+) => {
+  const id = request.params.id;
+  if (!id) {
+    return badRequest(reply, "id is required");
+  }
+  await AppService.deleteFaq(id);
+  return createdOrUpdated(reply, "Faq deleted successfully");
+};

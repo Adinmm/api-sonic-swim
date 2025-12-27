@@ -301,3 +301,15 @@ export const deleteCoach = async (id: string) => {
   }
   return removeImageDB;
 };
+
+export const deleteFaq = async (id: string) => {
+  const result = await prisma.faq_question.delete({
+    where: {
+      id,
+    },
+  });
+  if (!result) {
+    throw new Error("failed to delete faq");
+  }
+  return result;
+};
