@@ -276,3 +276,28 @@ export const createFaqQuestion = async (data: FaqQuestionModel) => {
   }
   return result;
 };
+
+export const deleteCoach = async (id: string) => {
+  const coach = await prisma.coach.findUnique({
+    where: {
+      id,
+    },
+  });
+  if (!coach) {
+    throw new Error("Coach not found");
+  }
+
+  const deleteImage = await cloudinary.uploader.destroy(coach.image_public_id);
+  if (!deleteImage) {
+    throw new Error("Failed destroy image");
+  }
+  const removeImageDB = await prisma.coach.delete({
+    where: {
+      id,
+    },
+  });
+  if (!removeImageDB) {
+    throw new Error("Failed delete image from database");
+  }
+  return removeImageDB;
+};

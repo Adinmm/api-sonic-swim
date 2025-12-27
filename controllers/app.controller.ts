@@ -198,3 +198,15 @@ export const createFaqQuestion = async (
   await AppService.createFaqQuestion(input);
   return createdOrUpdated(reply, "Faq Question created successfully");
 };
+
+export const deleteCoach = async (
+  request: FastifyRequest<{ Params: { id: string } }>,
+  reply: FastifyReply
+) => {
+  const id = request.params.id;
+  if (!id) {
+    return badRequest(reply, "id is required");
+  }
+  await AppService.deleteCoach(id);
+  return createdOrUpdated(reply, "Coach deleted successfully");
+};
