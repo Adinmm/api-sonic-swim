@@ -12,7 +12,7 @@ dotenv.config();
 const app = Fastify();
 
 app.register(cors, {
-  origin: "*",
+  origin: "https://www.sonicswimmingclub.online",
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
 });
 
