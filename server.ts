@@ -16,6 +16,7 @@ app.register(cors, {
     "https://www.sonicswimmingclub.online",
     "http://localhost:3000",
     "https://clubrenangmedan.online",
+    "https://www.clubrenangmedan.online"
   ],
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
 });
