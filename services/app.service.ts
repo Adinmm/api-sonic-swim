@@ -325,3 +325,16 @@ export const deleteFaqCategory = async (id: string) => {
   }
   return result;
 };
+
+export const updateClass = async (id: string, data: ClassModel) => {
+  const response = await prisma.kelas.update({
+    where: {
+      id,
+    },
+    data,
+  });
+  if (!response) {
+    throw new Error("failed to update class");
+  }
+  return response;
+};

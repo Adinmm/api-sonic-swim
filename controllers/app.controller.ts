@@ -234,3 +234,16 @@ export const deleteFaqCategory = async (
   await AppService.deleteFaqCategory(id);
   return createdOrUpdated(reply, "Faq Category deleted successfully");
 };
+
+export const updateClass = async (
+  request: FastifyRequest<{ Body: ClassModel; Params: { id: string } }>,
+  reply: FastifyReply
+) => {
+  const id = request.params.id;
+  const input = request.body;
+  if (!id) {
+    return badRequest(reply, "id is required");
+  }
+  await AppService.updateClass(id, input);
+  return createdOrUpdated(reply, "Class updated successfully");
+};

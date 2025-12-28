@@ -58,6 +58,11 @@ export const appRoute = async (route: FastifyInstance) => {
     handler: AppController.updateUser,
   });
 
+  route.patch("/class/:id", {
+    preHandler: AppMiddleware.validation(ClassSchema),
+    handler: AppController.updateClass,
+  });
+
   route.delete("/class/:id", AppController.deleteClass);
 
   route.delete("/image/:id", AppController.deleteImage);
