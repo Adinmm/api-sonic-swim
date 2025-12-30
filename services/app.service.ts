@@ -35,7 +35,7 @@ export const getClasses = async () => {
   }
   const result = await prisma.kelas.findMany({
     orderBy:{
-      created_at:"desc"
+      created_at:"asc"
     }
   });
   if (!result) {
