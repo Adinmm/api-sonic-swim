@@ -33,7 +33,11 @@ export const getClasses = async () => {
   if (data === 0) {
     throw new Error("Class not found");
   }
-  const result = await prisma.kelas.findMany();
+  const result = await prisma.kelas.findMany({
+    orderBy:{
+      created_at:"desc"
+    }
+  });
   if (!result) {
     throw new Error("Class not found");
   }
